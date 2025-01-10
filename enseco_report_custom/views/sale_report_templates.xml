@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_document" inherit_id="l10n_ar_sale.report_saleorder_document">
+        <xpath expr="//td//span[contains(text(), 'SubTotal')]/.." position="replace">
+            <th name="th_subtotal" t-if="doc.vat_discriminated" class="text-end">
+                <span>SubTotal</span>
+            </th>
+        </xpath>
+        <xpath expr="//td//span[contains(text(), 'Total')]/.." position="replace">
+            <th name="th_subtotal" t-else="" class="text-end">
+                <span>Total</span>
+            </th>
+        </xpath>
+    </template>
+
+    <!-- <template id="document_tax_totals_only_total" inherit_id="account.document_tax_totals" primary="True">
+        <xpath expr="//t//tr[contains(@class, 'o_subtotal')]/.." position="replace"/>
+    </template> -->
+
+    <template id="report_saleorder_document_customization" inherit_id="studio_customization.web_studio_report_ed_06cda52f-63b6-4712-bced-8de16bbe3c81" active="True">
+        <xpath expr="//td[@name='td_priceunit']" position="replace">
+            <td name="td_priceunit" class="text-end">
+                <span t-field="line.price_unit"/>
+                <br/>
+            </td>
+        </xpath>
+        <!-- <xpath expr="//th[@name='th_taxes']" position="replace"/>
+        <xpath expr="//td[@name='td_taxes']" position="replace"/>
+        <t t-call="l10n_ar_sale.document_tax_totals" position="attributes">
+            <attribute name="t-call">enseco_report_custom.document_tax_totals</attribute>
+        </t> -->
+    </template>
+
+</odoo>

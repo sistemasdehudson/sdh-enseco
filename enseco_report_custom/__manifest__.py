@@ -1,0 +1,17 @@
+{
+    "name": "Enseco Reportes Custom",
+    "summary": "Enseco Reportes Custom",
+    "version": "17.0.0.1",
+    "category": "Tools",
+    "website": "",
+    "author": "Valentin Romero - NexAr IT",
+    "license": "LGPL-3",
+    "application": False,
+    "installable": True,
+    "depends": ["l10n_ar_edi", "sale", "stock", "stock_ux", "stock_voucher", "l10n_ar_stock"],
+    "data": [
+        "data/paperformat_data.xml",
+        "views/sale_report_templates.xml",
+        "views/report_deliveryslip.xml",
+    ],
+}
