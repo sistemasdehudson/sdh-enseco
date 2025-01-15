@@ -11,6 +11,7 @@
     "depends": ["l10n_ar_edi", "sale", "stock", "stock_ux", "stock_voucher", "l10n_ar_stock"],
     "data": [
         "data/paperformat_data.xml",
+        "data/sale_order_data.xml",
         "views/sale_report_templates.xml",
         "views/report_deliveryslip.xml",
     ],
