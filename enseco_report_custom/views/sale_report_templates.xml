@@ -24,6 +24,14 @@
         <t t-call="l10n_ar_sale.document_tax_totals" position="attributes">
             <attribute name="t-call">enseco_report_custom.document_tax_totals</attribute>
         </t>
+        <span t-field="line.report_price_unit" position="replace">
+            <span t-field="line.price_unit_with_tax" t-if="without_tax">3</span>
+            <span t-field="line.price_unit" t-else="">3</span>
+        </span>
+        <span t-field="line.report_price_subtotal" position="replace">
+            <span t-field="line.price_total" t-if="without_tax">27.00</span>
+            <span t-field="line.price_subtotal" t-else="">27.00</span>
+        </span>
     </template>
 
     <template id="document_tax_totals" inherit_id="account.document_tax_totals">
