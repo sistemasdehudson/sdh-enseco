@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_delivery_enseco" model="ir.actions.report">
+            <field name="name">Recibo de entrega (ENSECO)</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">enseco_report_custom.report_deliveryslip_enseco</field>
+            <field name="report_file">enseco_report_custom.report_deliveryslip_enseco</field>
+            <field name="print_report_name">'Recibo de entrega - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="model_stock_picking"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

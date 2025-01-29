@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="action_report_saleorder_without_tax" model="ir.actions.report">
-            <field name="name">Cotización en PDF sin IVA</field>
+            <field name="name">Cotización en PDF sin IVA (ENSECO)</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">enseco_report_custom.report_saleorder_without_tax</field>

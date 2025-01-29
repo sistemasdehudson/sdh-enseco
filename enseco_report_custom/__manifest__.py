@@ -12,7 +12,9 @@
     "data": [
         "data/paperformat_data.xml",
         "data/sale_order_data.xml",
+        "data/stock_picking_data.xml",
         "views/sale_report_templates.xml",
         "views/report_deliveryslip.xml",
+        "views/stock_picking_views.xml",
     ],
 }
