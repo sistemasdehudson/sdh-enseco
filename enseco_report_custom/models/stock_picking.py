@@ -8,10 +8,11 @@ class StockPicking(models.Model):
         'automatic_declare_value',
         'move_ids.state',
         'move_ids.quantity',
+        'move_ids_without_package.quantity',
     )
     def _compute_declared_value(self):
         super()._compute_declared_value()
-        for rec in self.filtered(lambda p: p.sale_id and p.state not in ['done', 'cancel']):
+        for rec in self:
             rec.declared_value = 0
             for move_id in rec.move_ids_without_package:
                 factor_inv = move_id.sale_line_id.product_uom.factor_inv if move_id.sale_line_id.product_uom.factor_inv else 1
