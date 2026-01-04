@@ -1,7 +1,7 @@
 {
     "name": "Enseco Reportes Custom",
     "summary": "Enseco Reportes Custom",
-    "version": "17.0.0.1",
+    "version": "19.0.1.0.0",
     "category": "Tools",
     "website": "",
     "author": "Valentin Romero - NexAr IT",
