@@ -12,10 +12,17 @@ class StockMove(models.Model):
     @api.depends("sale_line_id.product_uom", "quantity")
     def _compute_quantity_detail(self):
         for move in self:
-            factor = getattr(move.sale_line_id.product_uom_id, 'factor', 1.0)
+            factor = (
+                move.sale_line_id.product_uom_id.factor
+                if move.sale_line_id.product_uom_id.factor
+                else 1
+            )
             if factor == 0:
-                _logger.warning(f"Factor de conversión es 0 para UoM {move.sale_line_id.product_uom_id.id}, usando 1.0")
-                factor = 1.0
+                _logger.warning(
+                    "El factor de la unidad de medida es cero para el producto %s. Se asignará un factor de 1 para evitar errores de división.",
+                    move.sale_line_id.product_id.name,
+                )
+                factor = 1  
             quantity_real = move.quantity / factor
             move.quantity_detail = (
                 str(quantity_real) + " U. de " + str(move.sale_line_id.product_uom_id.name)

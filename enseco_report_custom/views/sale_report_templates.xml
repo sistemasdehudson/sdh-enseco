@@ -60,7 +60,7 @@
         <t t-call="web.html_container">
             <t t-set="without_tax" t-value="True" />
             <t t-foreach="docs" t-as="doc">
-                <t t-call="enseco_sale_hide_taxes.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
+                <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
             </t>
         </t>
     </template>
@@ -69,7 +69,7 @@
         <t t-call="web.html_container">
             <t t-set="without_prices" t-value="True" />
             <t t-foreach="docs" t-as="doc">
-                <t t-call="enseco_sale_hide_taxes.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
+                <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
             </t>
         </t>
     </template>

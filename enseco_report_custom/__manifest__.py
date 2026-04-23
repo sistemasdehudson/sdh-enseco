@@ -9,8 +9,8 @@
     "application": False,
     "installable": True,
     "depends": [
-        #"l10n_ar_sale",
-        #"l10n_ar_stock",
+        "l10n_ar_sale",
+        "l10n_ar_stock",
         "sale_stock",
         "sale",
         "stock",

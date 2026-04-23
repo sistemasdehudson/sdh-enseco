@@ -6,8 +6,8 @@
             <field name="name">Cotización sin IVA</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-html</field>
-            <field name="report_name">enseco_sale_hide_taxes.report_saleorder_without_tax</field>
-            <field name="report_file">enseco_sale_hide_taxes.report_saleorder_without_tax</field>
+            <field name="report_name">enseco_report_custom.report_saleorder_without_tax</field>
+            <field name="report_file">enseco_report_custom.report_saleorder_without_tax</field>
             <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
             <field name="binding_model_id" ref="sale.model_sale_order" />
             <field name="binding_type">report</field>
@@ -17,8 +17,8 @@
             <field name="name">Cotización sin Precios ni IVA</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-html</field>
-            <field name="report_name">enseco_sale_hide_taxes.report_saleorder_without_prices</field>
-            <field name="report_file">enseco_sale_hide_taxes.report_saleorder_without_prices</field>
+            <field name="report_name">enseco_report_custom.report_saleorder_without_prices</field>
+            <field name="report_file">enseco_report_custom.report_saleorder_without_prices</field>
             <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
             <field name="binding_model_id" ref="sale.model_sale_order" />
             <field name="binding_type">report</field>
