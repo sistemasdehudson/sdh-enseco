@@ -10,6 +10,7 @@ class StockPicking(models.Model):
         'move_ids.quantity',
         'move_ids_without_package.quantity',
     )
+    
     def _compute_declared_value(self):
         super()._compute_declared_value()
         for rec in self:
