@@ -14,6 +14,7 @@
         "sale_stock",
         "sale",
         "stock",
+        "stock_declare_value",
     ],
     "data": [
         "views/sale_report_templates.xml",

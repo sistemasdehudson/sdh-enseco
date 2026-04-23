@@ -9,7 +9,7 @@ class StockMove(models.Model):
         string="Detalle de cantidad", compute="_compute_quantity_detail", store=True
     )
 
-    @api.depends("sale_line_id.product_uom", "quantity")
+    @api.depends("sale_line_id.product_uom_id", "quantity")
     def _compute_quantity_detail(self):
         for move in self:
             factor = (
