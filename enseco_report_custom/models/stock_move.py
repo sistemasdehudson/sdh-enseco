@@ -12,8 +12,8 @@ class StockMove(models.Model):
     def _compute_quantity_detail(self):
         for move in self:
             factor_inv = (
-                move.sale_line_id.product_uom_id.factor_inv
-                if move.sale_line_id.product_uom_id.factor_inv
+                move.sale_line_id.product_uom_id.factor_inverse
+                if move.sale_line_id.product_uom_id.factor_inverse
                 else 1
             )
             quantity_real = move.quantity / factor_inv
