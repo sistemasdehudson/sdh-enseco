@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Inherit and modify the sale order document template -->
-    <template id="report_saleorder_document_enseco" inherit_id="sale.report_saleorder_document">
+    <template id="report_saleorder_document_enseco" inherit_id="l10n_ar_sale.report_saleorder_document">
         <!-- Hide tax column header when without_tax or without_prices is True -->
         <xpath expr="//th[@name='th_taxes']" position="attributes">
             <attribute name="t-att-style">'display: none;' if (without_tax or without_prices) else ''</attribute>
@@ -44,7 +44,7 @@
         <xpath expr="//td[@name='td_product_quantity']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
-        <t t-call="sale.document_tax_totals" position="replace">
+        <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
             <tr class="o_total">
                 <td>
                     <strong>Total</strong>
