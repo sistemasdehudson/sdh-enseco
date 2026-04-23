@@ -8,7 +8,6 @@ class StockPicking(models.Model):
         'automatic_declare_value',
         'move_ids.state',
         'move_ids.quantity',
-        'move_ids_without_package.quantity',
     )
     
     def _compute_declared_value(self):
