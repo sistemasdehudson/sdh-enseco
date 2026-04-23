@@ -11,11 +11,7 @@ class StockMove(models.Model):
     @api.depends("sale_line_id.product_uom", "quantity")
     def _compute_quantity_detail(self):
         for move in self:
-            factor_inv = (
-                move.sale_line_id.product_uom_id.factor_inverse
-                if move.sale_line_id.product_uom_id.factor_inverse
-                else 1
-            )
+            factor_inv = getattr(move.sale_line_id.product_uom_id, 'factor', 1.0)
             quantity_real = move.quantity / factor_inv
             move.quantity_detail = (
                 str(quantity_real) + " U. de " + str(move.sale_line_id.product_uom_id.name)
