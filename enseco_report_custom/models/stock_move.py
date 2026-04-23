@@ -14,7 +14,7 @@ class StockMove(models.Model):
         for move in self:
             factor = getattr(move.sale_line_id.product_uom_id, 'factor', 1.0)
             if factor == 0:
-                _logger.warning(f"Factor de conversión es 0 para UoM {uom.id}, usando 1.0")
+                _logger.warning(f"Factor de conversión es 0 para UoM {move.sale_line_id.product_uom_id.id}, usando 1.0")
                 factor = 1.0
             quantity_real = move.quantity / factor
             move.quantity_detail = (
