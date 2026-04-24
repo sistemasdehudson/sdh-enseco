@@ -19,9 +19,11 @@
             <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices else 'padding: 0px 2px;'</attribute>
         </xpath>
         <!-- Hide subtotal column header when without_prices is True -->
+        <!--
         <xpath expr="//th[@name='th_subtotal']" position="attributes">
             <attribute name="t-att-style">'display: none;' if without_prices else ''</attribute>
         </xpath>
+        -->
         <!-- Hide subtotal column data when without_prices is True -->
         <xpath expr="//table[hasclass('o_main_table')]" position="attributes">
             <attribute name="style" add="font-size: 10px;" separator=" " />
