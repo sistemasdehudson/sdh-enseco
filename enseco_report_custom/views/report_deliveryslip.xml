@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
    <template id="report_delivery_document" priority="21" inherit_id="l10n_ar_stock_ux.report_delivery_document">
-        <xpath expr="//t[@t-if='o.declared_value']" position="attributes">
-            <attribute name="t-if">o.declared_value and not custom</attribute>
-        </xpath>
-        <xpath expr="//t[@t-if='o.declared_value and not custom']" position="after">
+        <xpath expr="//t[@t-if='o.declared_valuet and custom']" position="after">
             <t t-if="o.weight and custom">
                 <br/>
                 <strong>PESO TOTAL:</strong>
