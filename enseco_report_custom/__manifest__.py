@@ -19,7 +19,8 @@
     "data": [
         "views/sale_report_templates.xml",
         "data/sale_order_report.xml",
-        #"views/report_deliveryslip.xml",
-        #"views/stock_picking_views.xml",
+        "data/stock_picking_data.xml",
+        "views/report_deliveryslip.xml",
+        "views/stock_picking_views.xml",
     ],
 }
