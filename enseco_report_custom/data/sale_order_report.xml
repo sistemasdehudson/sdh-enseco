@@ -24,7 +24,7 @@
             <field name="binding_type">report</field>
         </record>
         <!-- Report action for sale order without prices and taxes -->
-        <record id="action_report_saleorder_without_prices" model="ir.actions.report">
+        <record id="action_report_saleorder_without_prices_tax" model="ir.actions.report">
             <field name="name">Cotización sin Precios con IVA</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-html</field>

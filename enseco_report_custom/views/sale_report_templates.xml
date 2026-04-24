@@ -47,7 +47,7 @@
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <t t-call="l10n_ar_sale.document_tax_totals" position="attributes">
-            <attribute name="t-call">'l10n_ar_sale.document_tax_totals' if without_prices_tax else 'report_totals_without_prices'</attribute>
+            <attribute name="t-call">{{'l10n_ar_sale.document_tax_totals' if without_prices_tax else 'enseco_report_custom.report_totals_without_prices'}}</attribute>
         </t>
     </template>
     <template id="report_totals_without_prices">
