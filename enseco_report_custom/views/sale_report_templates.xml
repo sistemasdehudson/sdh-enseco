@@ -46,10 +46,11 @@
         <xpath expr="//td[@name='td_product_quantity']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
-        <t t-if="without_prices_tax">
+        <t t-call="l10n_ar_sale.document_tax_totals" position="atributes">
+            <attribute name="t-call">'l10n_ar_sale.document_tax_totals' if without_prices_tax else 'report_totals_without_prices'</attribute>
         </t>
-        <t t-else="">
-            <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
+    </template>
+    <template id="report_totals_without_prices">
                 <tr class="o_total">
                     <td>
                         <strong>Total</strong>
@@ -58,10 +59,7 @@
                         <strong t-out="doc.amount_total" widget="monetary" monetary=", " display_currency="o.currency_id" />
                     </td>
                 </tr>
-            </t>
-        </t>
     </template>
-
     <!-- Report template for sale order without taxes -->
     <template id="report_saleorder_without_tax">
         <t t-call="web.html_container">
