@@ -5,7 +5,7 @@
         <record id="action_report_saleorder_without_tax" model="ir.actions.report">
             <field name="name">Cotización sin IVA</field>
             <field name="model">sale.order</field>
-            <field name="report_type">qweb-html</field>
+            <field name="report_type">qweb-pdf</field>
             <field name="report_name">enseco_report_custom.report_saleorder_without_tax</field>
             <field name="report_file">enseco_report_custom.report_saleorder_without_tax</field>
             <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
@@ -16,7 +16,7 @@
         <record id="action_report_saleorder_without_prices" model="ir.actions.report">
             <field name="name">Cotización sin Precios ni IVA</field>
             <field name="model">sale.order</field>
-            <field name="report_type">qweb-html</field>
+            <field name="report_type">qweb-pdf</field>
             <field name="report_name">enseco_report_custom.report_saleorder_without_prices</field>
             <field name="report_file">enseco_report_custom.report_saleorder_without_prices</field>
             <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
@@ -27,7 +27,7 @@
         <record id="action_report_saleorder_without_prices_tax" model="ir.actions.report">
             <field name="name">Cotización sin Precios con IVA</field>
             <field name="model">sale.order</field>
-            <field name="report_type">qweb-html</field>
+            <field name="report_type">qweb-pdf</field>
             <field name="report_name">enseco_report_custom.report_saleorder_without_prices_tax</field>
             <field name="report_file">enseco_report_custom.report_saleorder_without_prices_tax</field>
             <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>

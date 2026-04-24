@@ -65,7 +65,7 @@
                         <strong>Total</strong>
                     </td>
                     <td class="text-end">
-                        <strong t-out="doc.amount_total" widget="monetary" monetary=", " display_currency="o.currency_id" />
+                        <strong t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
                     </td>
                 </tr>
     </template>
