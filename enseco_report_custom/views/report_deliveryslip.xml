@@ -13,7 +13,7 @@
             </t>  
         </xpath>
     <!-- FORMATO DE TABLA DE PRODUCTOS -->
-	  <xpath expr="//table[name=stock_move_line_table]" position="attributes">
+	  <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
             <attribute name="style" add="font-size: 10px;" separator=" " />
         </xpath>
         <xpath expr="//td[.//span[@t-field='move_line.product_id']]" position="attributes">
