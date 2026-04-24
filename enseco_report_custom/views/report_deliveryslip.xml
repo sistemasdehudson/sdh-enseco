@@ -13,9 +13,11 @@
             </t>  
         </xpath>
     <!-- FORMATO DE TABLA DE PRODUCTOS -->
-	  <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
+	   <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
             <attribute name="style" add="font-size: 10px;" separator=" " />
         </xpath>
+    </template>
+   <template id="report_delivery_document_stock" priority="21" inherit_id="report_delivery_document">
         <xpath expr="//td[.//span[@t-field='move_line.product_id']]" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
@@ -25,11 +27,6 @@
         <xpath expr="//td[.//span[@t-field='move_line.product_uom_id']]" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
-    <!--
-        <xpath expr="//td//span[@t-field='move.product_uom_qty']/.." position="attributes">
-            <attribute name="t-att-style">'display: none;' if custom else ''</attribute>
-        </xpath>
-	-->
 
         <xpath expr="//td//span[@t-field='move.product_uom']" position="replace">
             <span t-field="move.product_id.dimensional_uom_id" t-if="custom">units</span>
