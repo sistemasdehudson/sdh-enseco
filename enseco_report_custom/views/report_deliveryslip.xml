@@ -14,7 +14,7 @@
             <attribute name="style" add="font-size: 10px;" separator=" " />
         </xpath>
     </template>
-    <template id="stock_report_delivery_document_stock" inherit_id="stock.report_delivery_document_stock">
+    <template id="stock_report_delivery_document_stock" inherit_id="stock.report_delivery_document">
         <xpath expr="//td[.//span[@t-field='move_line.product_id']]" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
