@@ -15,7 +15,7 @@
         </xpath>
     </template>
     <template id="report_delivery_document_stock" inherit_id="stock.report_delivery_document">
-        <xpath expr="//td[.//span[@t-field='move_line.product_id']]" position="attributes">
+        <xpath expr="//td[.//span[@t-field='move.product_id']]" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <xpath expr="//td[.//span[@t-field='move_line.result_package_id']]" position="attributes">
