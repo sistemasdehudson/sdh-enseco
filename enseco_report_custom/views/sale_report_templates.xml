@@ -4,7 +4,7 @@
     <template id="report_saleorder_document_enseco" inherit_id="l10n_ar_sale.report_saleorder_document">
         <!-- Hide tax column header when without_tax or without_prices is True -->
         <xpath expr="//th[@name='th_taxes']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if (without_tax or without_prices) else ''</attribute>
+            <attribute name="t-att-style">'display: none;' if (without_tax or without_prices or without_prices_tax) else ''</attribute>
         </xpath>
         <!-- Hide tax column data when without_tax or without_prices is True -->
         <xpath expr="//td[@name='td_product_taxes']" position="attributes">
@@ -12,16 +12,16 @@
         </xpath>
         <!-- Hide price unit column header when without_prices is True -->
         <xpath expr="//th[@name='th_priceunit']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices else ''</attribute>
+            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else ''</attribute>
         </xpath>
         <!-- Hide price unit column data when without_prices is True -->
         <xpath expr="//td[@name='td_product_priceunit']" position="attributes">
-            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices else 'padding: 0px 2px;'</attribute>
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <!-- Hide subtotal column header when without_prices is True -->
         <!--
         <xpath expr="//th[@name='th_subtotal']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices else ''</attribute>
+            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else ''</attribute>
         </xpath>
         -->
         <!-- Hide subtotal column data when without_prices is True -->
@@ -35,7 +35,7 @@
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <xpath expr="//td[@name='td_product_subtotal']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices else 'padding: 0px 2px;'</attribute>
+            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <xpath expr="//td[@name='td_product_name']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
@@ -46,15 +46,17 @@
         <xpath expr="//td[@name='td_product_quantity']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
-        <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
-            <tr class="o_total">
-                <td>
-                    <strong>Total</strong>
-                </td>
-                <td class="text-end">
-                    <strong t-out="doc.amount_total" widget="monetary" monetary=", " display_currency="o.currency_id" />
-                </td>
-            </tr>
+        <t t-if="not without_prices_tax">
+            <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
+                <tr class="o_total">
+                    <td>
+                        <strong>Total</strong>
+                    </td>
+                    <td class="text-end">
+                        <strong t-out="doc.amount_total" widget="monetary" monetary=", " display_currency="o.currency_id" />
+                    </td>
+                </tr>
+            </t>
         </t>
     </template>
     <!-- Report template for sale order without taxes -->
@@ -70,6 +72,15 @@
     <template id="report_saleorder_without_prices">
         <t t-call="web.html_container">
             <t t-set="without_prices" t-value="True" />
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
+            </t>
+        </t>
+    </template>
+    <!-- Report template for sale order without prices with taxes -->
+    <template id="report_saleorder_without_prices_tax">
+        <t t-call="web.html_container">
+            <t t-set="without_prices_tax" t-value="True" />
             <t t-foreach="docs" t-as="doc">
                 <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
             </t>

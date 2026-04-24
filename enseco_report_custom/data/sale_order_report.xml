@@ -23,5 +23,16 @@
             <field name="binding_model_id" ref="sale.model_sale_order" />
             <field name="binding_type">report</field>
         </record>
+        <!-- Report action for sale order without prices and taxes -->
+        <record id="action_report_saleorder_without_prices" model="ir.actions.report">
+            <field name="name">Cotización sin Precios con IVA</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">enseco_report_custom.report_saleorder_without_prices_tax</field>
+            <field name="report_file">enseco_report_custom.report_saleorder_without_prices_tax</field>
+            <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+            <field name="binding_type">report</field>
+        </record>
     </data>
 </odoo>
