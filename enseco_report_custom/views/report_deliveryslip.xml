@@ -14,8 +14,7 @@
             <attribute name="style" add="font-size: 10px;" separator=" " />
         </xpath>
     </template>
-    <!--
-   <template id="report_delivery_document_stock" priority="21" inherit_id="report_delivery_document">
+    <template id="stock_report_delivery_document_stock" inherit_id="stock.report_delivery_document_stock">
         <xpath expr="//td[.//span[@t-field='move_line.product_id']]" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
@@ -33,8 +32,6 @@
         <xpath expr="//table[@name='stock_move_line_table']//thead//tr" position="inside">
             <th name="th_sml_quantity_detail" t-if="custom"><strong>DETALLE DE CANTIDAD</strong></th>
         </xpath>
-    </template>
-    -->
     <template id="stock_report_delivery_aggregated_move_lines" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
         <xpath expr="//tr" position="inside">
             <td class="text-center" name="move_line_aggregated_quantity_detail">
