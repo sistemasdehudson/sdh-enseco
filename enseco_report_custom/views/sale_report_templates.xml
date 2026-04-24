@@ -47,6 +47,7 @@
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <t t-if="without_prices_tax">
+        </t>
         <t t-else="">
             <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
                 <tr class="o_total">
@@ -60,7 +61,7 @@
             </t>
         </t>
     </template>
-    
+
     <!-- Report template for sale order without taxes -->
     <template id="report_saleorder_without_tax">
         <t t-call="web.html_container">
