@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-   <template id="report_delivery_document" priority="21" inherit_id="stock.report_delivery_document">
+   <template id="report_delivery_document" priority="21" inherit_id="l10n_ar_stock_ux.report_delivery_document">
         <xpath expr="//t[@t-if='o.declared_value']" position="attributes">
             <attribute name="t-if">o.declared_value and not custom</attribute>
         </xpath>
@@ -30,7 +30,7 @@
             <attribute name="t-att-style">'display: none;' if custom else ''</attribute>
         </xpath>
 	-->
-    
+
         <xpath expr="//td//span[@t-field='move.product_uom']" position="replace">
             <span t-field="move.product_id.dimensional_uom_id" t-if="custom">units</span>
             <span t-field="move.product_uom" t-else="">units</span>
