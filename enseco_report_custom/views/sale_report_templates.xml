@@ -47,7 +47,7 @@
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <t t-if="without_prices_tax">
-        <t-else>
+        <t t-else="">
             <t t-call="l10n_ar_sale.document_tax_totals" position="replace">
                 <tr class="o_total">
                     <td>
