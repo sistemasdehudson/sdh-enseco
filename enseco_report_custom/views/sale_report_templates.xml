@@ -11,10 +11,6 @@
             <attribute name="t-att-style">'display: none;' if (without_prices or without_prices_tax) else ''</attribute>
             <attribute name="t-att-class">' ' if (without_tax or without_prices or without_prices_tax) else 'class="text-end d-md-table-cell"'</attribute>
         </xpath>
-        <!-- Hide tax column data when without_tax or without_prices is True -->
-        <xpath expr="//td[@name='td_product_taxes']" position="attributes">
-            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if (without_price or without_prices_tax) else 'padding: 0px 2px;'</attribute>
-        </xpath>
         <!-- Hide price unit column header when without_prices is True -->
         <xpath expr="//th[@name='th_priceunit']" position="attributes">
             <attribute name="t-att-style">'display: none;padding: 0px 2px; ' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
@@ -43,6 +39,10 @@
         </xpath>
         <xpath expr="//td[@name='td_product_taxes']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
+        </xpath>
+        <!-- Hide tax column data when without_tax or without_prices is True -->
+        <xpath expr="//td[@name='td_product_taxes']" position="attributes">
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if (without_prices or without_prices_tax) else 'padding: 0px 2px;'</attribute>
         </xpath>
         <xpath expr="//td[@name='td_product_subtotal']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
