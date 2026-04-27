@@ -54,7 +54,7 @@
             <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <xpath expr="//td[@name='td_product_subtotal']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <xpath expr="//td[@name='td_product_name']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
