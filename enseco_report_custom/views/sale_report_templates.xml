@@ -4,16 +4,16 @@
     <template id="report_saleorder_document_enseco" inherit_id="l10n_ar_sale.report_saleorder_document">
         <!-- Hide tax column header when without_tax or without_prices is True -->
         <xpath expr="//th[@name='th_taxes']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if (without_tax or without_prices or without_prices_tax) else ''</attribute>
+            <attribute name="t-att-style">'display: none;' if (without_prices or without_prices_tax) else ''</attribute>
             <attribute name="t-att-class">' ' if (without_tax or without_prices or without_prices_tax) else 'class="text-end d-md-table-cell"'</attribute>
         </xpath>
-        <!-- Hide tax column data when without_tax or without_prices is True -->
-        <xpath expr="//td[@name='td_product_taxes']" position="attributes">
-            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if (without_tax or without_prices) else 'padding: 0px 2px;'</attribute>
+        <xpath expr="//th[@name='th_discount']" position="attributes">
+            <attribute name="t-att-style">'display: none;' if (without_prices or without_prices_tax) else ''</attribute>
+            <attribute name="t-att-class">' ' if (without_tax or without_prices or without_prices_tax) else 'class="text-end d-md-table-cell"'</attribute>
         </xpath>
         <!-- Hide price unit column header when without_prices is True -->
         <xpath expr="//th[@name='th_priceunit']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else ''</attribute>
+            <attribute name="t-att-style">'display: none;padding: 0px 2px; ' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <!-- Hide price unit column data when without_prices is True -->
         <xpath expr="//td[@name='td_product_priceunit']" position="attributes">
@@ -40,11 +40,21 @@
         <xpath expr="//td[@name='td_product_taxes']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
+        <!-- Hide tax column data when without_tax or without_prices is True -->
+        <xpath expr="//td[@name='td_product_taxes']" position="attributes">
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if (without_prices or without_prices_tax) else 'padding: 0px 2px;'</attribute>
+        </xpath>
         <xpath expr="//td[@name='td_product_subtotal']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
+        <xpath expr="//td[@name='td_product_discount']" position="attributes">
+            <attribute name="style" add="padding: 0px 2px;" separator=" " />
+        </xpath>
+        <xpath expr="//td[@name='td_product_discount']" position="attributes">
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
+        </xpath>
         <xpath expr="//td[@name='td_product_subtotal']" position="attributes">
-            <attribute name="t-att-style">'display: none;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
+            <attribute name="t-att-style">'display: none;padding: 0px 2px;' if without_prices or without_prices_tax else 'padding: 0px 2px;'</attribute>
         </xpath>
         <xpath expr="//td[@name='td_product_name']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
@@ -56,7 +66,7 @@
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
         <t t-call="l10n_ar_sale.document_tax_totals" position="attributes">
-            <attribute name="t-call">{{'l10n_ar_sale.document_tax_totals' if without_prices_tax else 'enseco_report_custom.report_totals_without_prices'}}</attribute>
+            <attribute name="t-call">{{'l10n_ar_sale.document_tax_totals' if without_prices_tax or (not without_tax and not without_prices_tax and not without_prices) else 'enseco_report_custom.report_totals_without_prices'}}</attribute>
         </t>
     </template>
     <template id="report_totals_without_prices">
