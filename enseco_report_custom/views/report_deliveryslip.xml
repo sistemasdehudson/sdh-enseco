@@ -16,6 +16,9 @@
 	   <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
             <attribute name="style" add="font-size: 10px;" separator=" " />
         </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']//thead//tr" position="inside">
+            <th name="th_sml_quantity_det" class="text-center" t-if="custom"><strong>DETALLE DE CANTIDAD</strong></th>
+        </xpath>
     </template>
     <template id="stock_report_delivery_aggregated_move_lines" inherit_id="stock.stock_report_delivery_aggregated_move_lines">
         <xpath expr="//td[1]" position="attributes">
@@ -36,9 +39,6 @@
         <xpath expr="//td//span[@t-field='move.product_uom']" position="replace">
             <span t-field="move.product_id.dimensional_uom_id" t-if="custom">units</span>
             <span t-field="move.product_uom" t-else="">units</span>
-        </xpath>
-        <xpath expr="//table[@name='stock_move_line_table']//thead//tr" position="inside">
-            <th name="th_sml_quantity_det" class="text-end" t-if="custom"><strong>DETALLE DE CANTIDAD</strong></th>
         </xpath>
         <xpath expr="//table[@name='stock_move_table']//thead//tr" position="inside">
             <th name="th_sm_quantity_det" class="text-end" t-if="custom"><strong>DETALLE DE CANTIDAD</strong></th>
