@@ -29,8 +29,7 @@ error en 19.0.
 
 ## Dependencias
 
-`sale_stock`, `stock_delivery`, `stock_picking_batch`, `stock_fleet` (y por él
-`fleet`), `stock_ux`, `l10n_ar_stock_ux`, `l10n_ar_stock_delivery` y
+`sale_stock`, `stock_delivery`, `stock_picking_batch`, `stock_fleet`, `fleet`, `stock_ux`, `l10n_ar_stock_ux`, `l10n_ar_stock_delivery` y
 `enseco_report_custom`.
 
 ## Configuración posterior

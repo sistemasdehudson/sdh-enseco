@@ -31,5 +31,4 @@ class SaleOrder(models.Model):
     reparto_confirmacion = fields.Selection(
         selection=REPARTO_CONFIRMACION,
         string="Confirmación de reparto",
-        default="confirmado",
     )

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- B5 · Confirmación de reparto = Confirmado en pedidos nuevos.
+         Como ir.default (igual que en Studio) y no como default del campo,
+         para que los pedidos existentes queden vacíos (DT 7.5). -->
+    <record id="reparto_default_confirmacion" model="ir.default">
+        <field name="field_id" ref="enseco_hoja_ruta.field_sale_order__reparto_confirmacion"/>
+        <field name="json_value">"confirmado"</field>
+    </record>
+</odoo>
