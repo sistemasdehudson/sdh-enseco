@@ -114,6 +114,8 @@ class StockPicking(models.Model):
         Se usa la fecha más tardía de los otros remitos pendientes del lote,
         porque Odoo recalcula la fecha del lote como la más temprana de sus
         remitos apenas entra uno nuevo. Si no hay otros, la del lote.
+        Los remitos que entran en la misma operación (self) no cuentan como
+        "otros": varios remitos agregados juntos toman la fecha del lote.
         Escribe solo scheduled_date (sin batch_id), así que no vuelve a entrar.
         """
         for remito in self:
@@ -121,7 +123,7 @@ class StockPicking(models.Model):
             if not lote or remito.state in ("done", "cancel"):
                 continue
             otros = lote.picking_ids.filtered(
-                lambda p: p.id != remito.id
+                lambda p: p not in self
                 and p.state not in ("done", "cancel")
                 and p.scheduled_date
             )
