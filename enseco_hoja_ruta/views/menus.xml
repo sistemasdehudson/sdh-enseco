@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- E4 · Inventario › Reportes › Viajes (km y horas) -->
+    <menuitem id="reparto_viajes_menu"
+              name="Viajes (km y horas)"
+              parent="stock.menu_warehouse_report"
+              action="reparto_viajes_action"
+              sequence="60"/>
+</odoo>

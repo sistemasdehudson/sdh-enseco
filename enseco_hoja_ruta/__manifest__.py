@@ -22,10 +22,13 @@
         "views/sale_order_views.xml",
         "views/stock_picking_views.xml",
         "views/stock_picking_batch_views.xml",
+        "views/viajes_report_views.xml",
+        "views/menus.xml",
         "report/paperformat.xml",
         "report/hoja_de_ruta.xml",
         "report/recibo_enseco.xml",
         "report/etiqueta.xml",
         "report/operaciones.xml",
     ],
+    "post_init_hook": "post_init_hook",
 }

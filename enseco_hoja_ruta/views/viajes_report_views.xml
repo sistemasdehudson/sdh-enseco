@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- C6 · Viajes: lista -->
+    <record id="reparto_viajes_list" model="ir.ui.view">
+        <field name="name">stock.picking.batch.list.reparto.viajes</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <list string="Viajes (km y horas)" default_order="scheduled_date desc">
+                <field name="scheduled_date" string="Fecha"/>
+                <field name="name" string="Lote"/>
+                <field name="vehicle_id"/>
+                <field name="reparto_vuelta"/>
+                <field name="reparto_hora_salida"/>
+                <field name="reparto_hora_regreso"/>
+                <field name="reparto_horas_viaje" string="Duración" widget="float_time" sum="Total"/>
+                <field name="reparto_km_salida"/>
+                <field name="reparto_km_regreso"/>
+                <field name="reparto_km_recorridos" sum="Total"/>
+                <field name="estimated_shipping_weight" string="Peso (kg)"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state in ('draft', 'in_progress')" decoration-danger="state == 'cancel'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- C7 · Viajes: tabla dinámica -->
+    <record id="reparto_viajes_pivot" model="ir.ui.view">
+        <field name="name">stock.picking.batch.pivot.reparto.viajes</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <pivot string="Viajes (km y horas)">
+                <field name="vehicle_id" type="row"/>
+                <field name="scheduled_date" interval="month" type="col"/>
+                <field name="reparto_km_recorridos" type="measure"/>
+                <field name="reparto_horas_viaje" type="measure" widget="float_time"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- C8 · Viajes: gráfico de barras de km por mes y vehículo -->
+    <record id="reparto_viajes_graph" model="ir.ui.view">
+        <field name="name">stock.picking.batch.graph.reparto.viajes</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <graph string="Viajes (km y horas)" type="bar">
+                <field name="scheduled_date" interval="month" type="row"/>
+                <field name="vehicle_id" type="row"/>
+                <field name="reparto_km_recorridos" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- E2 · Acción Viajes (km y horas) -->
+    <record id="reparto_viajes_action" model="ir.actions.act_window">
+        <field name="name">Viajes (km y horas)</field>
+        <field name="res_model">stock.picking.batch</field>
+        <field name="view_mode">list,pivot,graph,form</field>
+        <field name="domain">[('vehicle_id', '!=', False)]</field>
+    </record>
+
+    <!-- E3 · Vistas propias de la acción (el formulario es el estándar del lote) -->
+    <record id="reparto_viajes_action_view_list" model="ir.actions.act_window.view">
+        <field name="sequence">1</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="reparto_viajes_list"/>
+        <field name="act_window_id" ref="reparto_viajes_action"/>
+    </record>
+    <record id="reparto_viajes_action_view_pivot" model="ir.actions.act_window.view">
+        <field name="sequence">2</field>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="reparto_viajes_pivot"/>
+        <field name="act_window_id" ref="reparto_viajes_action"/>
+    </record>
+    <record id="reparto_viajes_action_view_graph" model="ir.actions.act_window.view">
+        <field name="sequence">3</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="reparto_viajes_graph"/>
+        <field name="act_window_id" ref="reparto_viajes_action"/>
+    </record>
+</odoo>
