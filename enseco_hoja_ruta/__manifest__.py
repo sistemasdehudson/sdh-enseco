@@ -24,5 +24,8 @@
         "views/stock_picking_batch_views.xml",
         "report/paperformat.xml",
         "report/hoja_de_ruta.xml",
+        "report/recibo_enseco.xml",
+        "report/etiqueta.xml",
+        "report/operaciones.xml",
     ],
 }

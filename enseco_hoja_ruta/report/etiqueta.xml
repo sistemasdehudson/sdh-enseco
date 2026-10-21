@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Etiqueta de Transferencia (PDF) de stock_ux. El registro se llama picking. -->
+
+    <!-- D9 · Vehículo, orden de entrega con vuelta y fecha programada -->
+    <template id="reparto_etiqueta_transferencia" inherit_id="stock_ux.custom_label_transfer_template_view_pdf" priority="99">
+        <xpath expr="//t[@t-out='picking.origin']/.." position="after">
+            <div t-if="picking.batch_id.vehicle_id" style="font-weight: normal;">Vehículo:
+                <t t-out="picking.batch_id.vehicle_id.display_name"/>
+            </div>
+            <div t-if="picking.reparto_orden_parada or picking.batch_id.reparto_vuelta" style="font-weight: normal;">Orden de entrega:
+                <t t-out="picking._reparto_orden_entrega_texto()"/>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-out='picking.date_done']" position="replace">
+            <t t-out="picking.date_done or picking.scheduled_date" t-options="{'widget': 'date'}"/>
+        </xpath>
+    </template>
+
+    <!-- D10 · Sin partner.mobile, que no existe en Odoo 19 (error 500). Corrige stock_ux por herencia. -->
+    <template id="reparto_etiqueta_sin_mobile" inherit_id="stock_ux.custom_label_transfer_template_view_pdf" priority="99">
+        <xpath expr="//t[@t-out='picking.partner_id.mobile']/.." position="replace"/>
+        <xpath expr="//t[@t-out='picking.partner_id.parent_id.mobile']/.." position="replace"/>
+        <xpath expr="//t[@t-if='picking.partner_id and (picking.partner_id.phone or picking.partner_id.mobile)']" position="attributes">
+            <attribute name="t-if">picking.partner_id and picking.partner_id.phone</attribute>
+        </xpath>
+        <xpath expr="//t[@t-elif='picking.partner_id.parent_id and (picking.partner_id.parent_id.phone or picking.partner_id.parent_id.mobile)']" position="attributes">
+            <attribute name="t-elif">picking.partner_id.parent_id and picking.partner_id.parent_id.phone</attribute>
+        </xpath>
+    </template>
+</odoo>

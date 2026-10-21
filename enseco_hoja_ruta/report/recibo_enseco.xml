@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Recibo de entrega (ENSECO). Se hereda la plantilla AR, que es la que usa
+        siempre el Recibo ENSECO (enseco_report_custom fija custom=True). Todos
+        los cambios dependen de custom: el Recibo de entrega estándar no cambia.
+    -->
+
+    <!-- D4 · Fecha programada mientras el remito no está validado -->
+    <template id="reparto_recibo_fecha_5818" inherit_id="l10n_ar_stock_ux.report_delivery_document" priority="30">
+        <xpath expr="//t[@t-set='report_date']" position="attributes">
+            <attribute name="t-value">o.date_done or (custom and o.scheduled_date)</attribute>
+        </xpath>
+    </template>
+
+    <!-- D5 · Tabla compacta con líneas y recuadro DATOS DE ENTREGA -->
+    <template id="reparto_recibo_datos_entrega" inherit_id="l10n_ar_stock_ux.report_delivery_document" priority="30">
+        <xpath expr="//table[@name='stock_move_table']" position="before">
+            <style t-if="custom">
+                table[name="stock_move_table"], table[name="stock_move_line_table"] {
+                    border-collapse: collapse !important;
+                }
+                table[name="stock_move_table"] th, table[name="stock_move_table"] td,
+                table[name="stock_move_line_table"] th, table[name="stock_move_line_table"] td {
+                    border: 1px solid #111827 !important;
+                    vertical-align: middle !important;
+                }
+                table[name="stock_move_table"] td, table[name="stock_move_line_table"] td {
+                    padding: 3px 4px !important;
+                }
+                table[name="stock_move_table"] th, table[name="stock_move_line_table"] th {
+                    padding: 4px !important;
+                }
+            </style>
+            <div t-if="custom" name="reparto_datos_entrega" style="border: 1px solid #111827; padding: 4px 8px; margin-bottom: 8px; font-size: 11px;">
+                <strong>DATOS DE ENTREGA</strong>
+                <span style="margin-left: 16px;"><strong>Dirección de entrega:</strong> <span t-field="o.reparto_direccion_entrega"/></span>
+                <span style="margin-left: 16px;"><strong>Teléfono en obra:</strong> <span t-field="o.reparto_telefono_obra"/></span>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- D6 · No imprime "PESO TOTAL" (lo agrega enseco_report_custom) -->
+    <template id="reparto_recibo_sin_peso_total" inherit_id="l10n_ar_stock_ux.report_delivery_document" priority="30">
+        <xpath expr="//*[@t-if='o.weight and custom']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+
+    <!-- D7 · Peso = peso para envío (shipping_weight) en el Recibo ENSECO -->
+    <template id="reparto_recibo_peso_envio" inherit_id="l10n_ar_stock_ux.report_delivery_document" priority="30">
+        <xpath expr="//t[@t-if='o.weight']/span[@t-field='o.weight']" position="replace">
+            <span t-if="custom" t-field="o.shipping_weight"/>
+            <span t-else="" t-field="o.weight"/>
+        </xpath>
+        <xpath expr="//span[@t-if='o.number_of_packages and o.weight']" position="attributes">
+            <attribute name="t-if">o.number_of_packages and (o.shipping_weight if custom else o.weight)</attribute>
+        </xpath>
+        <xpath expr="//t[@t-if='o.weight']" position="attributes">
+            <attribute name="t-if">o.shipping_weight if custom else o.weight</attribute>
+        </xpath>
+    </template>
+</odoo>

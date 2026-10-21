@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Operaciones de recolección: stock.report_picking (también lo usa stock_ux.report_picking_ux) -->
+
+    <!-- D11 · Vehículo y orden de entrega en el encabezado, filas agrupadas y tabla compacta -->
+    <template id="reparto_operaciones_encabezado_filas" inherit_id="stock.report_picking" priority="99">
+        <xpath expr="//div[@name='div_shipping_method']" position="replace">
+            <div t-if="o.reparto_orden_parada or o.batch_id.reparto_vuelta" class="col" name="div_shipping_method">
+                <strong>Orden de entrega:</strong>
+                <p t-out="o._reparto_orden_entrega_texto()"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='o.carrier_id' and not(@name)]" position="replace">
+            <div t-if="o.batch_id.vehicle_id" name="div_reparto_vehiculo">
+                <strong>Vehículo:</strong>
+                <p t-out="o.batch_id.vehicle_id.display_name"/>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-set='move_has_multiple_lines']" position="attributes">
+            <attribute name="t-value">len(move_lines_without_entire_pack.location_id) &gt; 1 or len(move_lines_without_entire_pack.location_dest_id) &gt; 1 or any(ml.package_id or ml.result_package_id or ml.lot_id or ml.lot_name for ml in move_lines_without_entire_pack)</attribute>
+        </xpath>
+        <xpath expr="(//table[.//t[@t-set='move_has_multiple_lines']])[1]" position="before">
+            <style>
+                table.o_main_table { font-size: 10px; }
+                table.o_main_table th, table.o_main_table td {
+                    padding: 3px !important;
+                    line-height: 15px;
+                    vertical-align: middle !important;
+                }
+                table.o_main_table th[name="th_product"] { width: 60%; }
+                table.o_main_table th[name="th_quantity"] { width: 20%; }
+                table.o_main_table th[name="th_from"], table.o_main_table th[name="th_to"] { width: 20%; }
+            </style>
+        </xpath>
+    </template>
+
+    <!-- D12 · Entrega en obra: dirección de la pestaña Reparto, distinta de la del cliente -->
+    <template id="reparto_operaciones_entrega_obra" inherit_id="stock.report_picking" priority="99">
+        <xpath expr="//div[hasclass('o_stock_report_header_row')]" position="before">
+            <div t-if="o.reparto_direccion_entrega" name="div_reparto_entrega_obra" style="width: 100%; font-weight: bold; margin-top: 8px;">
+                Entrega en obra: <span t-field="o.reparto_direccion_entrega"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>
