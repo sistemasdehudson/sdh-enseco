@@ -1,4 +1,10 @@
+import babel.dates
+import pytz
+
 from odoo import api, fields, models
+from odoo.tools.misc import babel_locale_parse
+
+REPARTO_TZ_DEFAULT = "America/Argentina/Buenos_Aires"
 
 REPARTO_VUELTA = [
     ("1", "Primera vuelta"),
@@ -70,3 +76,40 @@ class StockPickingBatch(models.Model):
                 if remitos:
                     remitos.write({"scheduled_date": lote.scheduled_date})
         return res
+
+    # Helpers de texto, fecha y hora para los reportes
+
+    def _reparto_vuelta_texto(self):
+        """Vuelta en mayúsculas ("PRIMERA VUELTA"); vacío si no hay lote o vuelta."""
+        if len(self) != 1 or not self.reparto_vuelta:
+            return ""
+        etiquetas = dict(self._fields["reparto_vuelta"]._description_selection(self.env))
+        return etiquetas.get(self.reparto_vuelta, "").upper()
+
+    def _reparto_tz(self):
+        """Zona horaria del usuario o, si no tiene, la de Buenos Aires."""
+        try:
+            return pytz.timezone(self.env.user.tz or REPARTO_TZ_DEFAULT)
+        except pytz.UnknownTimeZoneError:
+            return pytz.timezone(REPARTO_TZ_DEFAULT)
+
+    def _reparto_fecha_local(self, valor):
+        """Convierte un datetime UTC de la base a la zona horaria del usuario."""
+        return pytz.utc.localize(valor).astimezone(self._reparto_tz())
+
+    def _reparto_titulo_fecha(self):
+        """Fecha programada para el título de la hoja de ruta: "MARTES 15/09/2026"."""
+        self.ensure_one()
+        if not self.scheduled_date:
+            return ""
+        fecha = self._reparto_fecha_local(self.scheduled_date).date()
+        locale = babel_locale_parse(self.env.lang or self.env.user.lang or "es_AR")
+        return babel.dates.format_date(fecha, "EEEE dd/MM/yyyy", locale=locale).upper()
+
+    def _reparto_hora(self, campo):
+        """Hora (HH:mm) de un campo datetime del lote en la zona del usuario."""
+        self.ensure_one()
+        valor = self[campo]
+        if not valor:
+            return ""
+        return self._reparto_fecha_local(valor).strftime("%H:%M")

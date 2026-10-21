@@ -69,6 +69,21 @@ class StockPicking(models.Model):
         string="Lado de descarga",
     )
 
+    def _reparto_orden_entrega_texto(self):
+        """Orden de entrega con la vuelta del lote: "1RO - PRIMERA VUELTA".
+
+        Devuelve solo "1RO" o solo "PRIMERA VUELTA" si falta el otro dato, y
+        cadena vacía si no hay ninguno. Lo usan la hoja de ruta, la etiqueta
+        de transferencia y las operaciones de recolección.
+        """
+        self.ensure_one()
+        orden = ""
+        if self.reparto_orden_parada:
+            etiquetas = dict(self._fields["reparto_orden_parada"]._description_selection(self.env))
+            orden = etiquetas.get(self.reparto_orden_parada, "")
+        vuelta = self.batch_id._reparto_vuelta_texto()
+        return " - ".join(texto for texto in (orden, vuelta) if texto)
+
     def action_reparto_abrir_remito(self):
         """Abre el formulario del remito (botón de la lista de remitos del lote)."""
         self.ensure_one()
