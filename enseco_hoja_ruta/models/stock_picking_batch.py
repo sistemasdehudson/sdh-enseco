@@ -53,3 +53,20 @@ class StockPickingBatch(models.Model):
                 lote.reparto_horas_viaje = duracion.total_seconds() / 3600.0
             else:
                 lote.reparto_horas_viaje = 0.0
+
+    def write(self, vals):
+        """Al cambiar la fecha programada del lote, sus remitos pendientes la toman.
+
+        Escribe scheduled_date en los remitos sin batch_id, así que no dispara
+        la lógica del remito que entra al lote.
+        """
+        res = super().write(vals)
+        if "scheduled_date" in vals:
+            for lote in self.filtered("scheduled_date"):
+                remitos = lote.picking_ids.filtered(
+                    lambda p: p.state not in ("done", "cancel")
+                    and p.scheduled_date != lote.scheduled_date
+                )
+                if remitos:
+                    remitos.write({"scheduled_date": lote.scheduled_date})
+        return res

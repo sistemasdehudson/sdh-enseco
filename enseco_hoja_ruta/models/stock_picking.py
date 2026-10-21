@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 REPARTO_ORDEN_PARADA = [
     ("01", "1RO"),
@@ -80,3 +80,36 @@ class StockPicking(models.Model):
             "views": [[False, "form"]],
             "target": "current",
         }
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        remitos = super().create(vals_list)
+        remitos.filtered("batch_id")._reparto_tomar_fecha_lote()
+        return remitos
+
+    def write(self, vals):
+        res = super().write(vals)
+        if "batch_id" in vals:
+            self._reparto_tomar_fecha_lote()
+        return res
+
+    def _reparto_tomar_fecha_lote(self):
+        """Un remito que entra a un lote toma la fecha de los demás remitos.
+
+        Se usa la fecha más tardía de los otros remitos pendientes del lote,
+        porque Odoo recalcula la fecha del lote como la más temprana de sus
+        remitos apenas entra uno nuevo. Si no hay otros, la del lote.
+        Escribe solo scheduled_date (sin batch_id), así que no vuelve a entrar.
+        """
+        for remito in self:
+            lote = remito.batch_id
+            if not lote or remito.state in ("done", "cancel"):
+                continue
+            otros = lote.picking_ids.filtered(
+                lambda p: p.id != remito.id
+                and p.state not in ("done", "cancel")
+                and p.scheduled_date
+            )
+            fecha = max(otros.mapped("scheduled_date")) if otros else lote.scheduled_date
+            if fecha and remito.scheduled_date != fecha:
+                remito.write({"scheduled_date": fecha})
