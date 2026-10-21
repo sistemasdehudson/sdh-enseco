@@ -1,7 +1,7 @@
 {
     "name": "Enseco - Ocultar Impuestos en Reportes de Venta",
     "summary": "Oculta impuestos en el detalle y totales del reporte de pedidos de venta ",
-    "version": "19.0.1.1.1",
+    "version": "19.0.1.1.2",
     "category": "Sales",
     "website": "",
     "author": "Enseco",
@@ -11,6 +11,7 @@
     "depends": [
         "l10n_ar_sale",
         "l10n_ar_stock",
+        "l10n_ar_stock_ux",
         "sale_stock",
         "sale",
         "stock",
