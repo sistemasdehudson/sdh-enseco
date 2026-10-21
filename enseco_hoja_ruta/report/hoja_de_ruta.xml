@@ -81,17 +81,17 @@
                                             <td t-out="p.origin"/>
                                             <td t-out="p.name"/>
                                             <td t-out="p.partner_id.display_name"/>
-                                            <td t-field="p.reparto_telefono_obra"/>
-                                            <td t-field="p.reparto_direccion_entrega"/>
-                                            <td t-field="p.reparto_zona"/>
+                                            <td><span t-field="p.reparto_telefono_obra"/></td>
+                                            <td><span t-field="p.reparto_direccion_entrega"/></td>
+                                            <td><span t-field="p.reparto_zona"/></td>
                                             <td class="reparto-num">
                                                 <span t-out="p.shipping_weight" t-options="{'widget': 'float', 'precision': 2}"/>
                                             </td>
                                             <td><strong t-out="p._reparto_orden_entrega_texto()"/></td>
-                                            <td t-field="p.reparto_lado_descarga"/>
-                                            <td t-field="p.reparto_obs_logistica"/>
-                                            <td t-field="p.reparto_recibe_lluvia"/>
-                                            <td t-field="p.reparto_confirmacion"/>
+                                            <td><span t-field="p.reparto_lado_descarga"/></td>
+                                            <td><span t-field="p.reparto_obs_logistica"/></td>
+                                            <td><span t-field="p.reparto_recibe_lluvia"/></td>
+                                            <td><span t-field="p.reparto_confirmacion"/></td>
                                         </tr>
                                     </t>
                                     <tr class="reparto-total">
