@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- C3 · Lista de remitos dentro del lote (pestaña Traslados) -->
+    <record id="reparto_vista_batch_picking_list" model="ir.ui.view">
+        <field name="name">stock.picking.list.batch.enseco.hoja.ruta</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_view_batch_tree_ref"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="editable">bottom</attribute>
+                <attribute name="default_order">reparto_orden_parada, batch_sequence</attribute>
+            </xpath>
+            <xpath expr="//field[@name='batch_sequence']" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="reparto_orden_parada"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <button name="action_reparto_abrir_remito" type="object" icon="fa-external-link" title="Abrir remito"/>
+            </xpath>
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <xpath expr="//field[@name='origin']" position="move"/>
+                <field name="sale_id" column_invisible="True"/>
+                <field name="reparto_direccion_entrega" readonly="1"/>
+                <field name="reparto_zona"/>
+                <field name="reparto_lado_descarga"/>
+                <field name="reparto_recibe_lluvia" optional="hide" readonly="not sale_id"/>
+                <field name="reparto_obs_logistica" optional="hide" readonly="not sale_id"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="string">Pedido</attribute>
+            </xpath>
+            <xpath expr="//field[@name='scheduled_date']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='zip']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <!-- Peso: stock_fleet agrega una segunda columna shipping_weight (vía stock.vpicktree) -->
+            <xpath expr="//field[@name='shipping_weight'][@sum='Total Shipping Weight']" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='shipping_weight'][not(@sum)]" position="attributes">
+                <attribute name="string">Peso (kg)</attribute>
+                <attribute name="sum">Total</attribute>
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="reparto_confirmacion" widget="badge" decoration-warning="reparto_confirmacion == 'sin_confirmar'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- C4 · Formulario del lote: vuelta y grupo Viaje -->
+    <record id="reparto_vista_batch_form" model="ir.ui.view">
+        <field name="name">stock.picking.batch.form.enseco.hoja.ruta</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_id']" position="after">
+                <field name="reparto_vuelta"/>
+            </xpath>
+            <xpath expr="//group[@id='batch_delivery_data']/.." position="after">
+                <group name="reparto_viaje">
+                    <group string="Viaje · Salida" name="reparto_viaje_salida">
+                        <field name="reparto_km_salida" placeholder="lo carga Almacenes"/>
+                        <field name="reparto_hora_salida" placeholder="lo carga Almacenes"/>
+                    </group>
+                    <group string="Viaje · Regreso" name="reparto_viaje_regreso">
+                        <field name="reparto_km_regreso" placeholder="lo carga Almacenes"/>
+                        <field name="reparto_hora_regreso" placeholder="lo carga Almacenes"/>
+                        <field name="reparto_km_recorridos"/>
+                        <field name="reparto_horas_viaje" widget="float_time"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- C5 · Columna Vuelta en Traslados por lote -->
+    <record id="reparto_batch_list_vuelta" model="ir.ui.view">
+        <field name="name">stock.picking.batch.list.enseco.hoja.ruta</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_tree"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vehicle_id']" position="after">
+                <field name="reparto_vuelta" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

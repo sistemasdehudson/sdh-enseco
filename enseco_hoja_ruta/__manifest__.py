@@ -21,5 +21,6 @@
     "data": [
         "views/sale_order_views.xml",
         "views/stock_picking_views.xml",
+        "views/stock_picking_batch_views.xml",
     ],
 }

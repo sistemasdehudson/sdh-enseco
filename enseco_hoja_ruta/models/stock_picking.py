@@ -68,3 +68,15 @@ class StockPicking(models.Model):
         selection=REPARTO_LADO_DESCARGA,
         string="Lado de descarga",
     )
+
+    def action_reparto_abrir_remito(self):
+        """Abre el formulario del remito (botón de la lista de remitos del lote)."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "stock.picking",
+            "res_id": self.id,
+            "view_mode": "form",
+            "views": [[False, "form"]],
+            "target": "current",
+        }
