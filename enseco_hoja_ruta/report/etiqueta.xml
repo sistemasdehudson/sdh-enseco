@@ -9,7 +9,7 @@
                 <t t-out="picking.batch_id.vehicle_id.display_name"/>
             </div>
             <div t-if="picking.reparto_orden_parada or picking.batch_id.reparto_vuelta" style="font-weight: normal;">Orden de entrega:
-                <t t-out="picking._reparto_orden_entrega_texto()"/>
+                <strong t-out="picking._reparto_orden_entrega_texto()"/>
             </div>
         </xpath>
         <xpath expr="//t[@t-out='picking.date_done']" position="replace">

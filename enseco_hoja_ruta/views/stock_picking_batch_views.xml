@@ -70,7 +70,7 @@
                 <attribute name="optional">show</attribute>
             </xpath>
             <xpath expr="//field[@name='state']" position="after">
-                <field name="reparto_confirmacion" widget="badge" decoration-warning="reparto_confirmacion == 'sin_confirmar'"/>
+                <field name="reparto_confirmacion" widget="badge" decoration-warning="reparto_confirmacion == 'sin_confirmar'" readonly="not sale_id"/>
             </xpath>
         </field>
     </record>

@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="priority">99</field>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='other_information']" position="after">
+            <xpath expr="//notebook" position="inside">
                 <page string="Reparto" name="reparto">
                     <group name="reparto_datos">
                         <group string="Datos para el chofer" name="reparto_chofer">
