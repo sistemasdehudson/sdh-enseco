@@ -58,11 +58,13 @@
             <xpath expr="//field[@name='company_id']" position="attributes">
                 <attribute name="readonly">1</attribute>
             </xpath>
-            <!-- Peso: stock_fleet agrega una segunda columna shipping_weight (vía stock.vpicktree) -->
-            <xpath expr="//field[@name='shipping_weight'][@sum='Total Shipping Weight']" position="attributes">
+            <!-- Peso: stock_fleet agrega una segunda columna shipping_weight (vía stock.vpicktree),
+                 seguida de shipping_volume. La de stock_delivery va después de weight.
+                 Odoo no permite usar @sum como selector. -->
+            <xpath expr="//field[@name='shipping_weight'][following-sibling::*[1][@name='shipping_volume']]" position="attributes">
                 <attribute name="column_invisible">True</attribute>
             </xpath>
-            <xpath expr="//field[@name='shipping_weight'][not(@sum)]" position="attributes">
+            <xpath expr="//field[@name='shipping_weight'][not(following-sibling::*[1][@name='shipping_volume'])]" position="attributes">
                 <attribute name="string">Peso (kg)</attribute>
                 <attribute name="sum">Total</attribute>
                 <attribute name="optional">show</attribute>
