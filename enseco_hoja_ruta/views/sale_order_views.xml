@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- C1 · Pestaña Reparto del pedido de venta -->
+    <record id="reparto_vista_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.enseco.hoja.ruta</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page string="Reparto" name="reparto">
+                    <group name="reparto_datos">
+                        <group string="Datos para el chofer" name="reparto_chofer">
+                            <field name="reparto_telefono_obra" placeholder="Quién recibe en la obra"/>
+                            <field name="reparto_direccion_entrega" placeholder="Calle, altura, localidad y partido"/>
+                        </group>
+                        <group string="Condiciones" name="reparto_condiciones">
+                            <field name="reparto_confirmacion" widget="radio" options="{'horizontal': true}"/>
+                            <field name="reparto_recibe_lluvia" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                    </group>
+                    <group string="Observaciones para logística" name="reparto_observaciones">
+                        <field name="reparto_obs_logistica" nolabel="1" colspan="2"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

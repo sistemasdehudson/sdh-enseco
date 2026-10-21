@@ -18,5 +18,8 @@
         "l10n_ar_stock_delivery",
         "enseco_report_custom",
     ],
-    "data": [],
+    "data": [
+        "views/sale_order_views.xml",
+        "views/stock_picking_views.xml",
+    ],
 }

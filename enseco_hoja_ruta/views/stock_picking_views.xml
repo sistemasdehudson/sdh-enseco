@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- C2 · Pestaña Reparto del remito -->
+    <record id="reparto_vista_stock_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.enseco.hoja.ruta</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra']" position="after">
+                <page string="Reparto" name="reparto">
+                    <field name="sale_id" invisible="1"/>
+                    <group name="reparto_datos">
+                        <!-- Datos del pedido: sin pedido de venta no hay dónde guardarlos -->
+                        <group string="Del pedido" name="reparto_del_pedido">
+                            <div class="text-muted" colspan="2">Se cargan en el pedido de venta</div>
+                            <field name="reparto_telefono_obra" readonly="not sale_id"/>
+                            <field name="reparto_direccion_entrega" readonly="not sale_id"/>
+                            <field name="reparto_confirmacion" widget="radio" options="{'horizontal': true}" readonly="not sale_id"/>
+                            <field name="reparto_recibe_lluvia" widget="radio" options="{'horizontal': true}" readonly="not sale_id"/>
+                        </group>
+                        <group string="De logística" name="reparto_de_logistica">
+                            <field name="reparto_orden_parada"/>
+                            <field name="reparto_zona"/>
+                            <field name="reparto_lado_descarga" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                    </group>
+                    <group string="Observaciones para logística" name="reparto_observaciones">
+                        <field name="reparto_obs_logistica" nolabel="1" colspan="2" readonly="not sale_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
