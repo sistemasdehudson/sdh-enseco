@@ -6,7 +6,7 @@
     <template id="reparto_etiqueta_transferencia" inherit_id="stock_ux.custom_label_transfer_template_view_pdf" priority="99">
         <xpath expr="//t[@t-out='picking.origin']/.." position="after">
             <div t-if="picking.batch_id.vehicle_id" style="font-weight: normal;">Vehículo:
-                <t t-out="picking.batch_id.vehicle_id.display_name"/>
+                <strong t-out="picking.batch_id.vehicle_id.display_name"/>
             </div>
             <div t-if="picking.reparto_orden_parada or picking.batch_id.reparto_vuelta" style="font-weight: normal;">Orden de entrega:
                 <strong t-out="picking._reparto_orden_entrega_texto()"/>
