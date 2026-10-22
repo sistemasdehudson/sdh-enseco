@@ -1,0 +1,520 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* enseco_hoja_ruta
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 01:53+0000\n"
+"PO-Revision-Date: 2026-10-22 01:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: enseco_hoja_ruta
+#: model:ir.actions.report,print_report_name:enseco_hoja_ruta.reparto_reporte_hoja_de_ruta
+msgid "'Hoja de ruta - %s' % (object.name)"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__10
+msgid "10MO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__11
+msgid "11VO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__12
+msgid "12VO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__01
+msgid "1RO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__02
+msgid "2DO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__03
+msgid "3RO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__04
+msgid "4TO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__05
+msgid "5TO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__06
+msgid "6TO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__07
+msgid "7MO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__08
+msgid "8VO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_orden_parada__09
+msgid "9NO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_recibo_datos_entrega
+msgid "<strong>DATOS DE ENTREGA</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_recibo_datos_entrega
+msgid "<strong>Dirección de entrega:</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "<strong>Lote:</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_operaciones_encabezado_filas
+msgid "<strong>Orden de entrega:</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_recibo_datos_entrega
+msgid "<strong>Teléfono en obra:</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_operaciones_encabezado_filas
+msgid "<strong>Vehículo:</strong>"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_picking_list
+msgid "Abrir remito"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_lado_descarga__acompanante
+msgid "Acompañante"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model,name:enseco_hoja_ruta.model_stock_picking_batch
+msgid "Batch Transfer"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+msgid "Calle, altura, localidad y partido"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Cliente"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+msgid "Condiciones"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_lado_descarga__conductor
+msgid "Conductor"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Confirmación"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__reparto_confirmacion
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_confirmacion
+msgid "Confirmación de reparto"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__sale_order__reparto_confirmacion__confirmado
+msgid "Confirmado"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__sale_order__reparto_recibe_lluvia__consultar
+msgid "Consultar"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+msgid "Datos para el chofer"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_stock_picking_form
+msgid "De logística"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_stock_picking_form
+msgid "Del pedido"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Dirección"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__reparto_direccion_entrega
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_direccion_entrega
+msgid "Dirección de entrega"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__display_name
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+msgid "Duración"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_horas_viaje
+msgid "Duración del viaje"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_operaciones_entrega_obra
+msgid "Entrega en obra:"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+msgid "Fecha"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Firma del chofer"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "HOJA DE RUTA ·"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.actions.report,name:enseco_hoja_ruta.reparto_reporte_hoja_de_ruta
+msgid "Hoja de ruta ENSECO"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_hora_regreso
+msgid "Hora de regreso"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_hora_salida
+msgid "Hora de salida"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Hora regreso"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Hora salida"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__id
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__id
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__id
+msgid "ID"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_lado_descarga__indistinto
+msgid "Indistinto"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_km_regreso
+msgid "KM de regreso"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_km_salida
+msgid "KM de salida"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_km_recorridos
+msgid "KM recorridos"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "KM regreso"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "KM salida"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_lado_descarga
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Lado de descarga"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+msgid "Lote"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__sale_order__reparto_recibe_lluvia__no
+msgid "No"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Nº presup."
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Observaciones"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__reparto_obs_logistica
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_obs_logistica
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_stock_picking_form
+msgid "Observaciones para logística"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_orden_parada
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Orden de entrega"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_etiqueta_transferencia
+msgid "Orden de entrega:"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_picking_list
+msgid "Pedido"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_picking_list
+msgid "Peso (kg)"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking_batch__reparto_vuelta__1
+msgid "Primera vuelta"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+msgid "Quién recibe en la obra"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Remito"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_sale_order_form
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_stock_picking_form
+msgid "Reparto"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model,name:enseco_hoja_ruta.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_stock_picking_form
+msgid "Se cargan en el pedido de venta"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking_batch__reparto_vuelta__2
+msgid "Segunda vuelta"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__sale_order__reparto_confirmacion__sin_confirmar
+msgid "Sin confirmar"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__sale_order__reparto_recibe_lluvia__si
+msgid "Sí"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "TOTAL DE LA VUELTA"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Teléfono de contacto"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__reparto_telefono_obra
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_telefono_obra
+msgid "Teléfono de contacto en obra"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking_batch__reparto_vuelta__3
+msgid "Tercera vuelta"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_picking_list
+msgid "Total"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model,name:enseco_hoja_ruta.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Vehículo"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_etiqueta_transferencia
+msgid "Vehículo:"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_form
+msgid "Viaje · Regreso"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_form
+msgid "Viaje · Salida"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.actions.act_window,name:enseco_hoja_ruta.reparto_viajes_action
+#: model:ir.ui.menu,name:enseco_hoja_ruta.reparto_viajes_menu
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_graph
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_list
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_viajes_pivot
+msgid "Viajes (km y horas)"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking_batch__reparto_vuelta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Vuelta"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "Zona"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_zona__caba
+msgid "Zona CABA"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_zona__norte
+msgid "Zona Norte"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_zona__oeste
+msgid "Zona Oeste"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields.selection,name:enseco_hoja_ruta.selection__stock_picking__reparto_zona__sur
+msgid "Zona Sur"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_zona
+msgid "Zona de reparto"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "de"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "kg de capacidad ·"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.reparto_vista_batch_form
+msgid "lo carga Almacenes"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "· EXCEDE LA CAPACIDAD"
+msgstr ""
+
+#. module: enseco_hoja_ruta
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_sale_order__reparto_recibe_lluvia
+#: model:ir.model.fields,field_description:enseco_hoja_ruta.field_stock_picking__reparto_recibe_lluvia
+#: model_terms:ir.ui.view,arch_db:enseco_hoja_ruta.hoja_de_ruta_enseco
+msgid "¿Recibe con lluvia?"
+msgstr ""
+
