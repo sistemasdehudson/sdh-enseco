@@ -7,6 +7,7 @@ def post_init_hook(env):
     """Configuración al instalar. Idempotente: no falla si falta algo."""
     _reparto_activar_gestion_despacho(env)
     _reparto_quitar_aeroo_hoja_de_ruta(env)
+    _reparto_precision_peso(env)
 
 
 def _reparto_activar_gestion_despacho(env):
@@ -59,3 +60,29 @@ def _reparto_quitar_aeroo_hoja_de_ruta(env):
         _logger.info("enseco_hoja_ruta: el reporte Aeroo Hoja de ruta ya estaba fuera del menú")
     else:
         _logger.info("enseco_hoja_ruta: no se encontró el reporte Aeroo Hoja de ruta")
+
+
+REPARTO_DIGITOS_PESO = 4
+
+
+def _reparto_precision_peso(env):
+    """Lleva la precisión decimal "Stock Weight" a 4 decimales.
+
+    Es configuración global (decimal.precision), no viaja con el módulo: sin esto
+    producción vuelve a guardar 0,395 kg/m como 0,40. Solo sube, nunca baja: si
+    ya tiene 4 o más, no la toca. Los reportes del módulo imprimen el peso con 2.
+    """
+    precision = env.ref("product.decimal_stock_weight", raise_if_not_found=False)
+    if not precision:
+        precision = env["decimal.precision"].search([("name", "=", "Stock Weight")], limit=1)
+    if not precision:
+        _logger.warning("enseco_hoja_ruta: no se encontró la precisión decimal Stock Weight")
+        return
+    if precision.digits < REPARTO_DIGITOS_PESO:
+        _logger.info(
+            "enseco_hoja_ruta: precisión Stock Weight de %s a %s decimales",
+            precision.digits, REPARTO_DIGITOS_PESO,
+        )
+        precision.digits = REPARTO_DIGITOS_PESO
+    else:
+        _logger.info("enseco_hoja_ruta: la precisión Stock Weight ya tenía %s decimales", precision.digits)

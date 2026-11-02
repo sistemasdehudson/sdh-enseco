@@ -42,4 +42,11 @@
             </div>
         </xpath>
     </template>
+
+    <!-- Peso con 2 decimales (lo agrega stock_delivery.report_shipping2; la precisión Stock Weight es de 4) -->
+    <template id="reparto_operaciones_peso" inherit_id="stock.report_picking" priority="99">
+        <xpath expr="//div[@t-if='o.shipping_weight']/span[@t-field='o.shipping_weight']" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': 2}</attribute>
+        </xpath>
+    </template>
 </odoo>

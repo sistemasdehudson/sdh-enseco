@@ -2,7 +2,7 @@
     "name": "ENSECO - Hoja de ruta de reparto",
     "summary": "Datos de reparto en pedidos, remitos y lotes, Hoja de ruta ENSECO "
     "y reporte de viajes (km y horas)",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "category": "Inventory/Delivery",
     "author": "SDH",
     "license": "LGPL-3",

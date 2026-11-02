@@ -47,17 +47,31 @@
         </xpath>
     </template>
 
-    <!-- D7 · Peso = peso para envío (shipping_weight) en el Recibo ENSECO -->
+    <!-- D7 · Peso = peso para envío (shipping_weight) en el Recibo ENSECO, con 2 decimales
+         (la precisión Stock Weight es de 4: sin precision imprimiría "413,5500 kg") -->
     <template id="reparto_recibo_peso_envio" inherit_id="l10n_ar_stock_ux.report_delivery_document" priority="30">
         <xpath expr="//t[@t-if='o.weight']/span[@t-field='o.weight']" position="replace">
-            <span t-if="custom" t-field="o.shipping_weight"/>
-            <span t-else="" t-field="o.weight"/>
+            <span t-if="custom" t-field="o.shipping_weight" t-options="{'widget': 'float', 'precision': 2}"/>
+            <span t-else="" t-field="o.weight" t-options="{'widget': 'float', 'precision': 2}"/>
         </xpath>
         <xpath expr="//span[@t-if='o.number_of_packages and o.weight']" position="attributes">
             <attribute name="t-if">o.number_of_packages and (o.shipping_weight if custom else o.weight)</attribute>
         </xpath>
         <xpath expr="//t[@t-if='o.weight']" position="attributes">
             <attribute name="t-if">o.shipping_weight if custom else o.weight</attribute>
+        </xpath>
+    </template>
+
+    <!-- Recibo de entrega estándar: peso con 2 decimales (lo imprime stock_delivery; la precisión
+         Stock Weight es de 4). Extensión de stock.report_delivery_document: la ve también la plantilla AR. -->
+    <template id="reparto_recibo_estandar_peso" inherit_id="stock.report_delivery_document" priority="99">
+        <xpath expr="//div[@t-if='o.shipping_weight']//span[@t-field='o.shipping_weight']" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': 2}</attribute>
+        </xpath>
+    </template>
+    <template id="reparto_recibo_paquete_peso" inherit_id="stock.stock_report_delivery_package_section_line" priority="99">
+        <xpath expr="//span[@t-field='package.weight']" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': 2}</attribute>
         </xpath>
     </template>
 </odoo>

@@ -27,6 +27,13 @@ Al instalar, activa la *Gestión de despacho* en los tipos de operación de sali
 y quita del menú Imprimir de los remitos el reporte Aeroo "Hoja de ruta", que da
 error en 19.0.
 
+## Precisión del peso
+
+Al instalar o actualizar a 19.0.1.1.0, la precisión decimal **Stock Weight** pasa
+a 4 decimales (para pesos por metro como 0,395 kg/m). Es configuración global de
+la base: solo sube, nunca baja. El Recibo de entrega (ENSECO), las Operaciones de
+recolección y la Hoja de ruta ENSECO imprimen el peso con 2 decimales.
+
 ## Dependencias
 
 `sale_stock`, `stock_delivery`, `stock_picking_batch`, `stock_fleet`, `fleet`, `stock_ux`, `l10n_ar_stock_ux`, `l10n_ar_stock_delivery` y
