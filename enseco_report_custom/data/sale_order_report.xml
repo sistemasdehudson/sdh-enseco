@@ -34,5 +34,16 @@
             <field name="binding_model_id" ref="sale.model_sale_order" />
             <field name="binding_type">report</field>
         </record>
+        <!-- Report action for sale order with VAT always discriminated -->
+        <record id="action_report_saleorder_vat_discriminated" model="ir.actions.report">
+            <field name="name">Cotización con IVA discriminado</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">enseco_report_custom.report_saleorder_vat_discriminated</field>
+            <field name="report_file">enseco_report_custom.report_saleorder_vat_discriminated</field>
+            <field name="print_report_name">(object.state in ('draft', 'sent') and 'Presupuesto - %s' % (object.name)) or 'Pedido - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+            <field name="binding_type">report</field>
+        </record>
     </data>
 </odoo>

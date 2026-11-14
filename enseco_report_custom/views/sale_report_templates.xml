@@ -65,6 +65,10 @@
         <xpath expr="//td[@name='td_product_quantity']" position="attributes">
             <attribute name="style" add="padding: 0px 2px;" separator=" " />
         </xpath>
+        <!-- Reporte con IVA discriminado: columna % IVA solo con la alícuota en formato es_AR (21%, 10,5%); los IVA en 0 muestran su etiqueta (Exento, No Gravado) -->
+        <xpath expr="//t[@t-set='taxes']" position="attributes">
+            <attribute name="t-value">', '.join([(('%g' % tax.amount).replace('.', ',') + '%') if tax.amount else (tax.invoice_label or tax.name) for tax in line.tax_ids.filtered(lambda x: x.tax_group_id.l10n_ar_vat_afip_code)]) if vat_percent else ', '.join([(tax.invoice_label or tax.name) for tax in line.tax_ids.filtered(lambda x: x.tax_group_id.l10n_ar_vat_afip_code)])</attribute>
+        </xpath>
         <t t-call="l10n_ar_sale.document_tax_totals" position="attributes">
             <attribute name="t-call">{{'l10n_ar_sale.document_tax_totals' if without_prices_tax or (not without_tax and not without_prices_tax and not without_prices) else 'enseco_report_custom.report_totals_without_prices'}}</attribute>
         </t>
@@ -102,6 +106,16 @@
         <t t-call="web.html_container">
             <t t-set="without_prices_tax" t-value="True" />
             <t t-foreach="docs" t-as="doc">
+                <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
+            </t>
+        </t>
+    </template>
+    <!-- Report template for sale order with VAT always discriminated -->
+    <template id="report_saleorder_vat_discriminated">
+        <t t-call="web.html_container">
+            <t t-set="vat_percent" t-value="True" />
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context(enseco_vat_discriminated=True)" />
                 <t t-call="enseco_report_custom.report_saleorder_document_enseco" t-lang="doc.partner_id.lang" />
             </t>
         </t>

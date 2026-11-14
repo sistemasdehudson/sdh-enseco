@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_vat_wizard_form" model="ir.ui.view">
+        <field name="name">sale.order.vat.wizard.form</field>
+        <field name="model">sale.order.vat.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cambiar IVA de todas las líneas">
+                <p>Se reemplaza el IVA de todas las líneas del presupuesto por el que elijas. Las percepciones y otros impuestos de cada línea no se tocan.</p>
+                <group>
+                    <field name="order_id" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="tax_id" options="{'no_create': True, 'no_open': True}"/>
+                </group>
+                <footer>
+                    <button string="Aplicar" name="action_apply" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancelar" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_order_form_vat_button" model="ir.ui.view">
+        <field name="name">sale.order.form.enseco.vat.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='state']" position="before">
+                <button string="Cambiar IVA" name="action_open_vat_wizard" type="object"
+                        invisible="state not in ('draft', 'sent')"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
