@@ -1,6 +1,5 @@
 from odoo import api, fields, models
-import logging
-_logger = logging.getLogger(__name__)
+
 
 class StockMove(models.Model):
     _inherit = "stock.move"
@@ -9,21 +8,17 @@ class StockMove(models.Model):
         string="Detalle de cantidad", compute="_compute_quantity_detail", store=True
     )
 
-    @api.depends("sale_line_id.product_uom_id", "quantity")
+    @api.depends("sale_line_id.product_uom_id", "product_uom", "quantity")
     def _compute_quantity_detail(self):
+        # Misma regla que el Recibo de entrega (ENSECO), plantilla quantity_detail_enseco:
+        # solo si la UdM de venta difiere de la del movimiento, con formato es_AR
+        # ("10 U. de 6,00 MTS"). Es un campo almacenado, así que el formato es fijo en es_AR.
+        lang = self.env["res.lang"]._lang_get("es_AR") or self.env["res.lang"]._lang_get(self.env.lang)
         for move in self:
-            factor = (
-                move.sale_line_id.product_uom_id.factor
-                if move.sale_line_id.product_uom_id.factor
-                else 1
-            )
-            if factor == 0:
-                _logger.warning(
-                    "El factor de la unidad de medida es cero para el producto %s. Se asignará un factor de 1 para evitar errores de división.",
-                    move.sale_line_id.product_id.name,
-                )
-                factor = 1  
-            quantity_real = move.quantity / factor
-            move.quantity_detail = (
-                str(quantity_real) + " U. de " + str(move.sale_line_id.product_uom_id.name)
-            )
+            sale_uom = move.sale_line_id.product_uom_id.with_context(lang=lang.code)
+            if not sale_uom or sale_uom == move.product_uom:
+                move.quantity_detail = False
+                continue
+            qty = move.quantity / (sale_uom.factor or 1)
+            qty_txt = lang.format("%.4f", qty, grouping=True).rstrip("0").rstrip(lang.decimal_point)
+            move.quantity_detail = "%s U. de %s" % (qty_txt, sale_uom.name)
