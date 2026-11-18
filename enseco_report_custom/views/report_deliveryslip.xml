@@ -11,10 +11,10 @@
         </xpath>
     <!-- FORMATO DE TABLA DE PRODUCTOS -->
 	   <xpath expr="//table[@name='stock_move_table']" position="attributes">
-            <attribute name="style" add="font-size: 10px;" separator=" " />
+            <attribute name="style" add="font-size: 14px;" separator=" " />
         </xpath>
 	   <xpath expr="//table[@name='stock_move_line_table']" position="attributes">
-            <attribute name="style" add="font-size: 10px;" separator=" " />
+            <attribute name="style" add="font-size: 14px;" separator=" " />
         </xpath>
         <xpath expr="//table[@name='stock_move_line_table']//thead//tr" position="inside">
             <th name="th_sml_quantity_det" class="text-center" t-if="custom"><strong>DETALLE DE CANTIDAD</strong></th>

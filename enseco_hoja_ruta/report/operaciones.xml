@@ -21,10 +21,10 @@
         </xpath>
         <xpath expr="(//table[.//t[@t-set='move_has_multiple_lines']])[1]" position="before">
             <style>
-                table.o_main_table { font-size: 10px; }
+                table.o_main_table { font-size: 14px; }
                 table.o_main_table th, table.o_main_table td {
                     padding: 3px !important;
-                    line-height: 15px;
+                    line-height: 19px;
                     vertical-align: middle !important;
                 }
                 table.o_main_table th[name="th_product"] { width: 60%; }

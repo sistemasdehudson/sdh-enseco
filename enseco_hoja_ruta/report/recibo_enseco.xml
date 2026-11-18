@@ -32,7 +32,7 @@
                     padding: 4px !important;
                 }
             </style>
-            <div t-if="custom" name="reparto_datos_entrega" style="border: 1px solid #111827; padding: 4px 8px; margin-bottom: 8px; font-size: 11px;">
+            <div t-if="custom" name="reparto_datos_entrega" style="border: 1px solid #111827; padding: 4px 8px; margin-bottom: 8px; font-size: 14px;">
                 <strong>DATOS DE ENTREGA</strong>
                 <span style="margin-left: 16px;"><strong>Dirección de entrega:</strong> <span t-field="o.reparto_direccion_entrega"/></span>
                 <span style="margin-left: 16px;"><strong>Teléfono en obra:</strong> <span t-field="o.reparto_telefono_obra"/></span>
