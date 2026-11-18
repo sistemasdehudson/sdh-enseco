@@ -19,6 +19,13 @@
                             <field name="reparto_recibe_lluvia" widget="radio" options="{'horizontal': true}"/>
                         </group>
                     </group>
+                    <group name="reparto_logistica_fila">
+                        <group string="De logística" name="reparto_logistica">
+                            <field name="reparto_orden_parada"/>
+                            <field name="reparto_zona"/>
+                            <field name="reparto_lado_descarga" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                    </group>
                     <group string="Observaciones para logística" name="reparto_observaciones">
                         <field name="reparto_obs_logistica" nolabel="1" colspan="2"/>
                     </group>

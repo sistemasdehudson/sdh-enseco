@@ -28,6 +28,8 @@ REPARTO_LADO_DESCARGA = [
     ("indistinto", "Indistinto"),
 ]
 
+REPARTO_CAMPOS_LOGISTICA = ("reparto_orden_parada", "reparto_zona", "reparto_lado_descarga")
+
 
 class StockPicking(models.Model):
     _inherit = "stock.picking"
@@ -55,19 +57,35 @@ class StockPicking(models.Model):
         readonly=False,
     )
 
-    # Datos de logística, propios del remito.
+    # Datos de logística: los puede cargar el comercial en el pedido de venta
+    # y bajan a los remitos abiertos; en el remito se pueden cambiar.
     reparto_orden_parada = fields.Selection(
         selection=REPARTO_ORDEN_PARADA,
         string="Orden de entrega",
+        compute="_compute_reparto_logistica", store=True, readonly=False, copy=True,
     )
     reparto_zona = fields.Selection(
         selection=REPARTO_ZONA,
         string="Zona de reparto",
+        compute="_compute_reparto_logistica", store=True, readonly=False, copy=True,
     )
     reparto_lado_descarga = fields.Selection(
         selection=REPARTO_LADO_DESCARGA,
         string="Lado de descarga",
+        compute="_compute_reparto_logistica", store=True, readonly=False, copy=True,
     )
+
+    @api.depends("sale_id")
+    def _compute_reparto_logistica(self):
+        """Al tomar el pedido de venta, completa los datos vacíos con los del pedido.
+
+        Depende solo de sale_id: nunca pisa lo que logística cargó en el remito.
+        Los cambios posteriores del pedido los baja SaleOrder.write.
+        """
+        for picking in self:
+            sale = picking.sale_id
+            for campo in REPARTO_CAMPOS_LOGISTICA:
+                picking[campo] = picking[campo] or (sale[campo] if sale else False)
 
     def _reparto_orden_entrega_texto(self):
         """Orden de entrega con la vuelta del lote: "1RO - PRIMERA VUELTA".
